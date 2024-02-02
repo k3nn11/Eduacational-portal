@@ -12,24 +12,24 @@ namespace View.ViewModel
 {
     public static class UserView
     {
-
         public static async Task ViewAvailableCourses(int? id)
         {
             Course course2 = new Course();
             Repository<Course> courseRepository = new Repository<Course>();
             List<Course> completedCourses = await ViewCompletedCourses();
-            List<Course> InProgressCourses = await ViewCoursesInProgress(); 
+            List<Course> inProgressCourses = await ViewCoursesInProgress();
             if (id.HasValue)
             {
                 Course course1 = await courseRepository.GetByID(id.Value);
                 Console.WriteLine($"Course by Id: {course1.Title}");
             }
+
             List<Course> courses = await courseRepository.GetAll(course2);
             //User user = new User();
             Console.WriteLine("List of available courses");
             foreach (var course in courses)
             {
-                if (!completedCourses.Contains(course) && !InProgressCourses.Contains(course))
+                if (!completedCourses.Contains(course) && !inProgressCourses.Contains(course))
                 {
                     Console.WriteLine($"Available course: {course.Title}");
                 }
@@ -47,13 +47,13 @@ namespace View.ViewModel
             {
                 foreach (User user1 in users)
                 {
-                    foreach(Course course in user1.CompletedCourses)
+                    foreach (Course course in user1.CompletedCourses)
                     {
                         Console.WriteLine($"- {course.Title}");
                         courses.Add(course);
                     }
-                    
                 }
+
                 return courses;
             }
             else
@@ -70,8 +70,9 @@ namespace View.ViewModel
             Repository<User> userRepository = new Repository<User>();
             User user = new User();
             List<User> users = await userRepository.GetAll(user);
-           if (users != null)
-            {
+
+            if (users != null)
+           {
                 foreach (var user1 in users)
                 {
                     foreach ( Course course in user1.CompletedCourses)
@@ -80,8 +81,9 @@ namespace View.ViewModel
                         await Console.Out.WriteLineAsync($"- {course.CompletionPercentage}");
                     }
                 }
+
                 return courses;
-            }
+           }
             else
             {
                 await Console.Out.WriteLineAsync("Users is empty");
@@ -104,10 +106,8 @@ namespace View.ViewModel
             else
             {
                 await Console.Out.WriteLineAsync("The Id does not exist");
-            }   
+            }
         }
-
-
 
         private static int RequestId()
         {

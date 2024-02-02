@@ -23,9 +23,9 @@ namespace View
             {
                 if (authenticated)
                 {
-                    UserOptions();
+                   UserOptions();
                    int choice = int.Parse(Console.ReadLine());
-                   switch(choice)
+                   switch (choice)
                     {
                         case 1:
                             await ViewProfile();
@@ -33,8 +33,7 @@ namespace View
                         case 2:
                             await UserInteractionAsync();
                             break;
-
-                    }
+                   }
                 }
                 else
                 {
@@ -76,9 +75,9 @@ namespace View
                 default:
                     await Console.Out.WriteLineAsync("Choose a valid choice");
                     break;
-
             }
         }
+
         private static async Task UserInteractionAsync()
         {
             ChoiceOptions();
@@ -116,7 +115,6 @@ namespace View
             }
         }
 
-
         private static void ChoiceOptions()
         {
             Console.WriteLine("Enter the functionality you would like to execute");
@@ -136,7 +134,6 @@ namespace View
             Console.WriteLine("Enter the Functinality to perform:");
             Console.WriteLine("1: View User Profile");
             Console.WriteLine("2: User Interaction");
-
         }
 
         private static void UserProfileOptions()

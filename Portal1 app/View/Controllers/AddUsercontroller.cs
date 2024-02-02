@@ -39,6 +39,7 @@ namespace View.Controllers
                     break;
             }
         }
+
         private static void UserOptions()
         {
             Console.WriteLine("Enter the functionality to execute");
@@ -47,6 +48,5 @@ namespace View.Controllers
             Console.WriteLine("3: View the course that you have enrolled in");
             Console.WriteLine("4: View the material in the course");
         }
-
     }
 }

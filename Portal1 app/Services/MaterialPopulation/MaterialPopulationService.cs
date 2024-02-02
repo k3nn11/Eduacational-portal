@@ -139,7 +139,5 @@ namespace Services.MaterialPopulation
 
             return skills;
         }
-
-        
     }
 }

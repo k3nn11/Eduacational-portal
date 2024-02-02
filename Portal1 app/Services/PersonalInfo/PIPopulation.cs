@@ -12,14 +12,15 @@ namespace Services.PersonalInfo
 {
     public class PIPopulation : IPIPopulation
     {
-        private Repository<PersonalInformation> repository = new Repository<PersonalInformation>();
+        private Repository<PersonalInformation> _repository = new Repository<PersonalInformation>();
+
         public async Task PersonalInfoPopulation()
         {
             PersonalInformation information = new PersonalInformation();
             await Console.Out.WriteLineAsync("Enter name: ");
             string name = Console.ReadLine();
             information.Name = name;
-            await repository.Create(information);
+            await _repository.Create(information);
         }
 
         public async Task SkillPopulation()
@@ -27,7 +28,7 @@ namespace Services.PersonalInfo
             var personalInfo = new PersonalInformation();
             CourseService service = new CourseService();
             User user = service.User;
-            if(user != null)
+            if (user != null)
             {
                 if (user.CompletedCourses != null)
                 {
@@ -36,10 +37,11 @@ namespace Services.PersonalInfo
                         foreach (var skill in course.Skills)
                         {
                             user.Information.Skills.Add(skill);
-                            await repository.Create(personalInfo);
+                            await _repository.Create(personalInfo);
                             await Console.Out.WriteLineAsync($"- {skill} added to user skills");
                         }
                     }
+
                     return;
                 }
                 else

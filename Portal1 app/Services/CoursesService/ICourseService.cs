@@ -16,6 +16,5 @@ namespace Services.CoursesService
         Task AddCompletePercentageAsync();
 
         Task AddCompletedCoursesAsync();
-
     }
 }

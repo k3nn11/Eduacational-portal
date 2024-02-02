@@ -12,3 +12,16 @@ C:\Users\kt072\source\repos\portal\Portal1 app\Services\bin\Debug\EntityFramewor
 C:\Users\kt072\source\repos\portal\Portal1 app\Services\obj\Debug\Services.csproj.CopyComplete
 C:\Users\kt072\source\repos\portal\Portal1 app\Services\obj\Debug\Services.exe
 C:\Users\kt072\source\repos\portal\Portal1 app\Services\obj\Debug\Services.pdb
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\obj\Debug\Services.csproj.AssemblyReference.cache
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\obj\Debug\Services.csproj.CoreCompileInputs.cache
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\obj\Debug\Services.exe
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\obj\Debug\Services.pdb
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Services.exe.config
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Services.exe
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Services.pdb
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Data.exe
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\EntityFramework.dll
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Data.pdb
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\Data.exe.config
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\bin\Debug\EntityFramework.xml
+C:\Users\kennedy.njuguna\Source\Repos\Eduacational-portal\Portal1 app\Services\obj\Debug\Services.csproj.CopyComplete

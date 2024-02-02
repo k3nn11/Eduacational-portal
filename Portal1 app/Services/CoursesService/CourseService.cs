@@ -9,30 +9,23 @@ using System.Threading.Tasks;
 
 namespace Services.CoursesService
 {
-
     public class CourseService : ICourseService
     {
-        readonly static Repository<User> userRepository = new Repository<User>();
-
-        public User User { get; private set; }
+        private readonly static Repository<User> UserRepository = new Repository<User>();
 
         public CourseService()
         {
             InitializeUserAsync().Wait();
         }
 
-        private async Task InitializeUserAsync()
-        {
-            User = await GetUserAsync();
-        }
-
+        public User User { get; private set; }
 
         public async Task<User> GetUserAsync()
         {
             await Console.Out.WriteLineAsync("Enter User Id.");
             int userId = RequestId();
-            User user = await userRepository.GetByID(userId);
-            if( user != null)
+            User user = await UserRepository.GetByID(userId);
+            if ( user != null)
             {
                 return user;
             }
@@ -40,12 +33,10 @@ namespace Services.CoursesService
             {
                 return null;
             }
-            
         }
 
-
         public async Task StartCourseAsync()
-        { 
+        {
             Repository<Course> courseRepository = new Repository<Course>();
             await Console.Out.WriteLineAsync("Enter Course ID. ");
             Course course = await courseRepository.GetByID(RequestId());
@@ -61,6 +52,7 @@ namespace Services.CoursesService
                     await userRepository.Update(User.Id, User);
                     return;
                 }
+
                 await Console.Out.WriteLineAsync("Course is already enrolled");
                 return;
             }
@@ -90,13 +82,13 @@ namespace Services.CoursesService
             else
             {
                 await Console.Out.WriteLineAsync("User Id does not exist");
-            }       
+            }
         }
 
         public async Task AddCompletePercentageAsync()
         {
             List<Course> courses = new List<Course>();
-            int ReadCount = default;
+            int readCount = default;
             int courseId = default;
             Repository<Course> courseRepository = new Repository<Course>();
             Repository<User> userRepository = new Repository<User>();
@@ -108,10 +100,10 @@ namespace Services.CoursesService
             Video video = await videoRepository.GetByID(RequestId());
             Book book = await bookRepository.GetByID(RequestId());
             //User user = await GetUserAsync();
-            var UserId = User.Id;
+            var userId = User.Id;
             if (User != null)
             {
-                foreach(var course in User.InProgressCourses)
+                foreach (var course in User.InProgressCourses)
                 {
                     //Repository<User> userRepository = new Repository<User>();
                     int materialCount = course.Articles.Count + course.Articles.Count + course.Videos.Count;
@@ -119,29 +111,31 @@ namespace Services.CoursesService
                     {
                         await Console.Out.WriteLineAsync(article.Title);
                         course.Articles.Remove(article);
-                        ReadCount++;
+                        readCount++;
                     }
-                    else if(course.Books.Contains(book))
+                    else if (course.Books.Contains(book))
                     {
                         await Console.Out.WriteLineAsync(book.Title);
                         course.Books.Remove(book);
-                        ReadCount++;
+                        readCount++;
                     }
-                    else if(course.Videos.Contains(video))
+                    else if (course.Videos.Contains(video))
                     {
                         await Console.Out.WriteLineAsync(video.Title);
                         course.Videos.Remove(video);
-                        ReadCount++;
+                        readCount++;
                     }
-                    int percentage = (ReadCount / materialCount) * 100;
+
+                    int percentage = (readCount / materialCount) * 100;
                     course.CompletionPercentage = percentage;
                     courseId = course.Id;
-                    
+
                     courses.Add(course);
                 }
+
                 Course course1 = new Course();
                 await courseRepository.Update(courseId, course1); // check for errors.
-                await userRepository.Update(UserId, User); // check for errors later here.
+                await userRepository.Update(userId, User); // check for errors later here.
             }
         }
 
@@ -160,6 +154,7 @@ namespace Services.CoursesService
                         User.InProgressCourses.Remove(course);
                         await Console.Out.WriteLineAsync($"Success!!!- {course} is completed");
                     }
+
                     await userRepository.Update(userId, User); // check for errors here
                 }
             }
@@ -177,6 +172,11 @@ namespace Services.CoursesService
         {
             Console.WriteLine("Enter ID of materials in the following order:");
             Console.WriteLine("Article, Video, Book");
+        }
+
+        private async Task InitializeUserAsync()
+        {
+            User = await GetUserAsync();
         }
     }
 }
